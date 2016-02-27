@@ -12,7 +12,7 @@ class NewsFeed:
     user = None
 
     def __repr__(self):
-        return "\nUser: %s\nBody : %s \nCategory : %s \nScore: %s\nts: %s\n" % (
+        return "User: %s\nBody : %s \nCategory : %s \nScore: %s\nts: %s\n" % (
             self.user, self.body, self.category, self.score, self.ts)
 
     def __init__(self, name):
