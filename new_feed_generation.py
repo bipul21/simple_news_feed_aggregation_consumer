@@ -1,6 +1,6 @@
 import random
 from threading import Thread
-from time import gmtime, strftime,sleep
+from time import gmtime, strftime, sleep
 
 categories = ["music", "movies", "games", "photography", "career", "ai"]
 news_feed_text = ["Pune is beautiful", "I want to work at mindtickle", "Lorum Ipsum Dotum", "Harry Potter",
@@ -16,7 +16,7 @@ class NewsFeed:
 
     def __repr__(self):
         return "\nUser: %s\nBody : %s \nCategory : %s \nScore: %s\nts: %s\n" % (
-        self.user, self.body, self.category, self.score, self.ts)
+            self.user, self.body, self.category, self.score, self.ts)
 
     def __init__(self, name):
         self.user = name
@@ -43,8 +43,7 @@ class NewsFeedAggregator():
             category_queue = self.news_feed_map.get(category)
             news_feeds = category_queue
             ret_news_feed_list += news_feeds
-
-        return sorted(ret_news_feed_list, key=lambda x: x.ts)
+        return sorted(ret_news_feed_list, key=lambda x: x.ts,reverse=True)[:6]
 
 
 news_feed_aggregator = NewsFeedAggregator()
@@ -76,10 +75,17 @@ class UserFeedGenerator(Thread):
             print "========== Print Feed Generated ==========="
             for feed in feeds:
                 print feed
+            print  "========= End of News Feed =============="
             sleep(3)
 
 
 def main():
+    print "\n\n"
+    print "================================"
+    print "This is a simple example of newsfeed aggregator and generator based on certain filter criteria"
+    print "There are three different users deepak, bipul and hridyesh who are constantly posting new feed of different types"
+    print "Your feed is being and continouly with most recent news feed at the last"
+    print  "================================"
     user1 = User("deepak")
     user2 = User("bipul")
     user3 = User("hridyesh")
